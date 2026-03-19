@@ -48,3 +48,6 @@ ENV/
 screenshots/
 results/
 .claude/
+
+# Annotations
+anotacoes.md
