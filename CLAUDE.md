@@ -46,7 +46,17 @@ pytest tests/test_prompts.py -v -k "test_name"  # single test
 
 ## Success Criteria
 
-All 4 domain metrics must reach ≥ 0.9: Tone, Acceptance Criteria, User Story Format, Completeness. The average must also be ≥ 0.9.
+All 5 metrics must reach ≥ 0.9 AND the average must be ≥ 0.9:
+
+| Metric | How it's computed |
+|--------|-------------------|
+| F1-Score | LLM-as-Judge — content overlap between answer and reference |
+| Clarity | LLM-as-Judge — how clear and well-structured the output is |
+| Precision | LLM-as-Judge — how precise and relevant the output is |
+| Helpfulness | Derived: (Clarity + Precision) / 2 |
+| Correctness | Derived: (F1-Score + Precision) / 2 |
+
+Note: `metrics.py` also contains 4 domain-specific functions (`evaluate_tone_score`, `evaluate_acceptance_criteria_score`, `evaluate_user_story_format_score`, `evaluate_completeness_score`) but these are **not called by `evaluate.py`** and do not affect the pass/fail result.
 
 ## Prompt v2 Requirements
 
