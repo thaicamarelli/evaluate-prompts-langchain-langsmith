@@ -73,7 +73,7 @@ def main():
         return 1
 
     success = pull_prompts_from_langsmith(
-        prompt_path="leonanluppi/bug_to_user_story_v1",
+        prompt_path="leonanluppi/bug_to_user_story_v1", 
         output_filename="bug_to_user_story_v1.yml",
     )
     return 0 if success else 1
